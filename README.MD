@@ -1,0 +1,1 @@
+Zadáním této práce je postavit funkční 3D tiskárnu, která zároveň bude fungovat jako plotter s náklady pod 1500 Kč. Plastové díly rámu budou vytištěné na jiné 3D tiskárně. Tyto díly budou z většiny vlastního návrhu. Dále bude také součástí navrhnout vlastní software pro 3D tiskárnu. V dokumentaci poté vysvětlit princip postavené tiskárny a popsat postup konstrukce.
