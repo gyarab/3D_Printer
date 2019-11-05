@@ -1,0 +1,1 @@
+Skripty napsané v pythonu.
