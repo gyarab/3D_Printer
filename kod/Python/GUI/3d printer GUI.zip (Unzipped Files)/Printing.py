@@ -30,7 +30,6 @@ class Printing(threading.Thread):
 
         self.length = len(self.gcode)
         self.currentLine = 0
-        self.commandLog = []
 
     def getTime(self):
         vraceni = ""
@@ -68,12 +67,11 @@ class Printing(threading.Thread):
         self.PercentageLabel.config(text=str(int(self.getPercentage()))+"%")
         self.TimeLabel.config(text=self.getTime())
         if (line != False):
-            self.commandLog.append(line)
-            self.outputLog.delete(1.0, "end")
-            if len(self.commandLog) > 20:
-                del (self.commandLog[0])
-            for x in self.commandLog:
-                self.outputLog.insert("end", x)
+            numlines = int(self.outputLog.index('end - 1 line').split('.')[0])
+            if numlines > 20:
+                self.outputLog.delete(1.0, 2.0)
+                self.outputLog.edit_reset()
+            self.outputLog.insert('end', line)
 
     def run(self):
         self.ser1 = serial.Serial(self.device, 115200)

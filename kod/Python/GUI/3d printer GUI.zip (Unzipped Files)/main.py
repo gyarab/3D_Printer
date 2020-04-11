@@ -213,7 +213,7 @@ btn_pause = Button(window, state=DISABLED)
 btn_pause.grid(column=3, row=1, sticky=W, padx=style['padx'], pady=0)
 
 btn_mode = Button(window)
-btn_mode.grid(column=4, row=0, padx=style['padx'], pady=style['pady'])
+btn_mode.grid(column=4, row=0)
 
 
 btn_getfile = Button(window)
@@ -223,6 +223,7 @@ def vp_start_gui(cssFile = "normie_mode.css"):
     global window
     global endIcon
     global pauseIcon
+    global modeIcon
     global style
     style = getDctFromCss(cssFile)
 
@@ -246,10 +247,14 @@ def vp_start_gui(cssFile = "normie_mode.css"):
     lbl = Label(window, text="Bohemian Print GUI", font=fontNadpis, fg=textColor, bg=bgColor)
     lbl.grid(column=2, row=0, padx=4)
 
-    endIcon = PhotoImage(file =style['end-icon']+".png")
-    pauseIcon = PhotoImage(file =style['pause-icon']+".png")
+
+    endIcon = PhotoImage(file =style['end-icon'] + ".png")
+    pauseIcon = PhotoImage(file =style['pause-icon'] + ".png")
+    modeIcon = PhotoImage(file=style['mode-icon'] + ".png")
+
     endIcon = endIcon.subsample(16)
     pauseIcon = pauseIcon.subsample(16)
+    modeIcon = modeIcon.subsample(7)
 
     btn_getfile.config(text="Vybrat soubor tisku", font=fontText, bg=btnColor, fg=textColor,command=getfile,
                  highlightcolor = btnHighlightColor, highlightbackground = btnHighlightBackground, highlightthickness = btnHighlightThickness)
@@ -260,7 +265,7 @@ def vp_start_gui(cssFile = "normie_mode.css"):
     btn_pause.config(font=fontText, bg=btnColor, fg=textColor, command=pause, image = pauseIcon,
                  highlightcolor = btnHighlightColor, highlightbackground = btnHighlightBackground, highlightthickness = btnHighlightThickness)
 
-    btn_mode.config(font=fontText, bg=btnColor, fg=textColor, command=changeMode, image = pauseIcon,
+    btn_mode.config(font=fontText, bg=btnColor, fg=textColor, command=changeMode, image = modeIcon,
                  highlightcolor = btnHighlightColor, highlightbackground = btnHighlightBackground, highlightthickness = btnHighlightThickness)
 
     ttk.Style().configure("red.Horizontal.TProgressbar", troughcolor=fieldColor, background=btnColor)
