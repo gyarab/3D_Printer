@@ -23,6 +23,7 @@ cssutils.log.setLevel(logging.CRITICAL)
 mode = "normie_mode.css"
 device = ""
 
+#přečte .css soubor a vrátí dictionary.
 def getDctFromCss(path):
     dct = {}
     sheet = cssutils.parseFile(path)
@@ -62,7 +63,6 @@ def showHistory():
     hisoryList.delete(0, END)
     for line in reversed(history):
         hisoryList.insert(END, "..." + line[len(line) - 25:len(line)])
-
 
 def readHistory():
     global history
@@ -114,11 +114,7 @@ def getfile():
     btn_pause.config(state=NORMAL)
 
 def end():
-    #btn_end.config(state=DISABLED)
-    #hisoryList.config(state=NORMAL)
     Printer.End = True
-
-
 
 
 def pause():
@@ -183,8 +179,6 @@ textView.pack(side=BOTTOM, fill=BOTH)
 textViewFrame.grid(column=2, row=5, columnspan=2, pady=(30,0))
 
 
-
-
 choices = []
 for x in serial.tools.list_ports.comports(include_links=False):
     choices.append(x)
@@ -192,17 +186,17 @@ for x in serial.tools.list_ports.comports(include_links=False):
 if len(choices) == 0:
     choices.append("no device found")
 
-tkvar = StringVar(window)
-tkvar.set(choices[0])
-device = tkvar.get()
+dropdown = StringVar(window)
+dropdown.set(choices[0])
+device = dropdown.get()
 
 def change_dropdown(*args):
     global device
     global Printer
-    device = tkvar.get()
+    device = dropdown.get()
 
-tkvar.trace('w', change_dropdown)
-popupMenu = OptionMenu(window, tkvar, *choices)
+dropdown.trace('w', change_dropdown)
+popupMenu = OptionMenu(window, dropdown, *choices)
 popupMenu.config(width = 35)
 popupMenu.grid(column=1, row=1,  padx=style['padx'], pady=style['pady'])
 
