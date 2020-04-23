@@ -439,21 +439,26 @@ void CNC::process_string(char instruction[], byte size){
   Serial.println("b");
 }
 //čeká, dokud se do bufferu neuloží byte. ten přečte a vrátí jeho hodnotu. (tento byte představuje počet následujících bytů v instrukci)
-byte CNC::BytesAvailible(byte wait){
+byte CNC::BytesAvailible(){
   while (!Serial.available()){
   }
-  delay(wait);
-  return (Serial.available());
+  byte len = Serial.read();
+  Serial.println(len);
+  return (len);
 }
 
 //přečte a vykoná instrukci přijatou přes USB.
 void CNC::parseAndExecute(){
   
-  byte availibleBytes = BytesAvailible(6);
+  byte availibleBytes = BytesAvailible();
 
   char line[availibleBytes];
     for(byte x = 0; x< availibleBytes; x++){
+      while (!Serial.available()){
+        }
       line[x] = char(Serial.read());
     }
+    
     process_string(line, availibleBytes);
+    
 }
