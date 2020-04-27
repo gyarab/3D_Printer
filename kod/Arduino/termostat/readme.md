@@ -1,1 +1,1 @@
-Kod pro termostat vyrovnavajici teplotu hotendu.
+Kod pro termostat vyrovnavající teplotu hotendu.
