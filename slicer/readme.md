@@ -1,1 +1,1 @@
-nastavení programu Slic3r optimalozované pro tisk touto 3D tiskárnou
+Nastavení programu Slic3r optimalozované pro tisk touto 3D tiskárnou.
