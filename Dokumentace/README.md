@@ -1,1 +1,1 @@
-Dokumentace této ročníkové práce
+Dokumentace této ročníkové práce.
