@@ -4,4 +4,4 @@
 |Upevnění vertikálních motorů 2.stl|-//-|
 |Upevnění vertikálních motorů 3.stl|-//-|
 |Upevnění vertikálních motorů 4.stl|-//-|
-|drzak zavitovych tyci.stl|-//-|
+|drzak zavitovych tyci.stl|spojení krokového motorku a závitové tyče|
